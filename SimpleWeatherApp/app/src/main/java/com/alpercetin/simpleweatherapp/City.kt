@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ListView
-import android.widget.SearchView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import org.json.JSONArray
@@ -43,14 +42,13 @@ class City : Fragment() {
             val result:TextView = view.findViewById(R.id.selected_city_text)
             var new_city_data:String
             val fragment = Weather()
-            val searchView :SearchView
             val bundle = Bundle()
             allJson = activity?.assets?.open("city_list_tr.json")?.bufferedReader().use {
                 it?.readText()
             }
             var jsonArrayData = JSONArray(allJson)
             val listView = view.findViewById<ListView>(R.id.city_list_texts)
-            searchView = view.findViewById(R.id.search_bar)
+
             //var city_data = arrayOf(String)
             cityInfoArrayList = ArrayList<City_Info>()
             //val adapter = City_Adapter(this.activity,cityInfoArrayList)//ArrayAdapter(this,android.R.layout.simple_list_item_1,cityInfoArrayList[0].cityCode)
@@ -61,7 +59,7 @@ class City : Fragment() {
                 var countryName = jObject.getString("country")
                 var cityCode = cityName + "," + countryName
 
-                val cityData = City_Info(cityCode, cityID)
+                val cityData = City_Info(cityID, cityCode)
                 cityInfoArrayList.add(cityData)
             }
             view.findViewById<ListView>(R.id.city_list_texts).isClickable = true
@@ -72,7 +70,7 @@ class City : Fragment() {
                     val selectedItem = parent.getItemAtPosition(position) as City_Info
                     val info = selectedItem.cityCode + " " + selectedItem.cityId
                     result.text = "City Selected: $info"
-                    new_city_data = selectedItem.cityCode.toString()
+                    new_city_data = selectedItem.cityId.toString()
                     bundle.putString("data",new_city_data)
 
                 }
@@ -89,8 +87,6 @@ class City : Fragment() {
                     println(fragment.CITY_ID + "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+bundle.getString("data"))
                     //childFragmentManager.beginTransaction()?.replace(R.id.main_frame,fragment)?.commit()
                 }
-
-                //searchView.setOnQueryTextListener(SearchView.OnQueryTextListener{})
 
                 //var result2 = view.findViewById<ListView>(R.id.city_list_texts)
 
