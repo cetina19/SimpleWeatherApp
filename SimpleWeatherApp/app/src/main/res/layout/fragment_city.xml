@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/city_frame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple_200"
+    tools:context=".City">
+
+    <LinearLayout
+        android:id="@+id/cities_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/cities_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:gravity="center"
+            android:text="Cities"
+            android:textSize="16sp" />
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:queryHint="Search City"
+            app:iconifiedByDefault="false"
+            android:background="@drawable/box_lines2"
+            app:queryBackground="@android:color/transparent"
+            android:gravity="center">
+
+        </androidx.appcompat.widget.SearchView>
+
+        <LinearLayout
+            android:id="@+id/selected_city_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/selected_city_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="City Selected: "
+                android:textSize="13dp" />
+
+            <Button
+                android:id="@+id/city_selection_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Apply" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/city_list_texts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="15"
+            tools:listitem="@layout/list_item" />
+    </LinearLayout>
+</FrameLayout>
