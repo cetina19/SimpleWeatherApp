@@ -90,7 +90,7 @@ class City : Fragment() {
                     //childFragmentManager.beginTransaction()?.replace(R.id.main_frame,fragment)?.commit()
                 }
 
-                searchView.setOnQueryTextListener(SearchView.OnQueryTextListener{})
+                //searchView.setOnQueryTextListener(SearchView.OnQueryTextListener{})
 
                 //var result2 = view.findViewById<ListView>(R.id.city_list_texts)
 
